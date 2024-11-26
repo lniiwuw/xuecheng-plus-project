@@ -1,0 +1,5 @@
+### 申请验证码
+POST {{checkcode_host}}/checkcode/pic
+
+### 校验验证码
+POST {{checkcode_host}}/checkcode/verisfy?key=checkcode:c3dce1413f95414e943dcf0a97983fe8&code=HZCG

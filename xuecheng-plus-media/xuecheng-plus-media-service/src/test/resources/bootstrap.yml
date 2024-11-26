@@ -1,0 +1,13 @@
+# 微服务配置
+spring:
+  application:
+    name: media-api
+  datasource:
+    username: root
+    password: 1234
+    url: jdbc:mysql://192.168.72.132:3306/xc_media?serverTimezone=UTC&useUnicode=true&useSSL=false&characterEncoding=utf8
+    driver-class-name: com.mysql.cj.jdbc.Driver
+# 日志配置
+logging:
+  config: classpath:log4j2-dev.xml
+

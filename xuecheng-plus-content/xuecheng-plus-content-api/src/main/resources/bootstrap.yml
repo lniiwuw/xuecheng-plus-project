@@ -1,0 +1,40 @@
+# 微服务配置
+spring:
+  application:
+    name: content-api
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.72.132:8848
+      discovery:
+        namespace: ${spring.profiles.active}
+        group: xuecheng-plus-project
+      config:
+        # 见官方文档
+        # 拉取指定的namespace和group下dataId为${prefix}-${spring.profiles.active}.${file-extension}的配置文件
+        # prefix: 文件名前缀，默认是spring.application.name，也可通过spring.cloud.nacos.config.prefix配置
+        # 默认命令空间为PUBLIC
+        namespace: ${spring.profiles.active}
+        # 默认值为DEFAULT_GROUP
+        group: xuecheng-plus-project
+        file-extension: yaml
+        # 开启监听和自动刷新，默认为true
+        refresh-enabled: true
+        extension-configs:
+          - data-id: content-service-${spring.profiles.active}.yaml
+            group: xuecheng-plus-project
+            refresh: true
+        shared-configs:
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+          - data-id: freemarker-config-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+          - data-id: feign-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+          - data-id: redis-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true

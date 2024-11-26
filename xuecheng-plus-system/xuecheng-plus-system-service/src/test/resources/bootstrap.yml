@@ -1,0 +1,33 @@
+server:
+  servlet:
+    context-path: /system
+  port: 63110
+#微服务配置
+spring:
+  application:
+    name: system-api
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.72.132:3306/xc_system?serverTimezone=UTC&useUnicode=true&useSSL=false&characterEncoding=utf8
+    username: root
+    password: 1234
+# 日志文件配置路径
+logging:
+  config: classpath:log4j2-dev.xml
+# swagger接口文档
+knife4j:
+  enable: true
+  openapi:
+    title: 学成在线内容管理系统接口文档
+    description: 内容管理系统对相关课程信息进行管理
+    email: lniiwuw@gmail.com
+    concat: lniiwuw
+    url: https://www.itcast.cn
+    version: v1.0.0
+    group:
+      default:
+        group-name: default
+        api-rule: package
+        api-rule-resources:
+          - com.xuecheng.system
+

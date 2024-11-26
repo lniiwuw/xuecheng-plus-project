@@ -1,0 +1,2 @@
+### 获取课程发布信息
+GET {{content_host}}/content/course/whole/121

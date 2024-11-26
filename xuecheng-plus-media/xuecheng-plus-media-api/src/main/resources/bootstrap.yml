@@ -1,0 +1,35 @@
+#微服务配置
+spring:
+  application:
+    name: media-api
+  servlet:
+    # springboot web默认上传限制大小为1MB
+    multipart:
+      # 单个文件最大大小
+      max-file-size: 50MB
+      # 所有上传文件最大大小
+      max-request-size: 50MB
+  profiles:
+    active: dev
+  cloud:
+    nacos:
+      server-addr: 192.168.72.132:8848
+      discovery:
+        namespace: ${spring.profiles.active}
+        group: xuecheng-plus-project
+      # nacos配置优先级：服务对应的yaml配置 > 扩展配置 > 共享配置
+      config:
+        namespace: ${spring.profiles.active}
+        group: xuecheng-plus-project
+        file-extension: yaml
+        refresh-enabled: true
+        extension-configs:
+          - data-id: media-service-${spring.profiles.active}.yaml
+            group: xuecheng-plus-project
+            refresh: true
+        shared-configs:
+          - data-id: logging-${spring.profiles.active}.yaml
+            group: xuecheng-plus-common
+            refresh: true
+
+
